@@ -10,7 +10,7 @@ def get_secret():
     """
     Retrieves the private key from AWS Secrets Manager.
     """
-    secret_name = os.environ.get("SECRET_NAME", "starkbank_private_key")
+    secret_name = os.environ.get("SECRET_NAME")
     region_name = os.environ.get("AWS_REGION", "us-east-1")
 
     # Create a Secrets Manager client
@@ -44,8 +44,8 @@ def lambda_handler(event, context):
     print("Lambda started")
     
     # 1. Retrieve configuration
-    project_id = os.environ.get("STARKBANK_PROJECT_ID", "6332048945971200")
-    environment = os.environ.get("STARKBANK_ENV", "sandbox")
+    project_id = os.environ.get("STARKBANK_PROJECT_ID")
+    environment = os.environ.get("STARKBANK_ENV")
     
     # 2. Retrieve private key from Secrets Manager
     try:
